@@ -29,31 +29,35 @@ const ContactForm = () => {
 
     try {
       // TODO: Replace with your n8n webhook URL
-      const webhookUrl = https://gzoidx.app.n8n.cloud/webhook-test/lovable-form;
+      const webhookUrl = "https://gzoidx.app.n8n.cloud/webhook/lovable";
       
-      // Simulated submission - replace with actual webhook call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const res = await fetch(webhookUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  });
 
-      toast.success("Demo request received!", {
-        description: "We'll contact you within 24 hours",
-      });
+  if (!res.ok) throw new Error("Webhook failed");
 
-      setFormData({
-        name: "",
-        company: "",
-        email: "",
-        phone: "",
-        notes: "",
-        consent: false,
-      });
-    } catch (error) {
-      toast.error("Something went wrong", {
-        description: "Please try again or email us directly",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  toast.success("Demo request received!", {
+    description: "We'll contact you within 24 hours",
+  });
+
+  setFormData({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    notes: "",
+    consent: false,
+  });
+} catch (error) {
+  toast.error("Something went wrong", {
+    description: "Please try again or email us directly",
+  });
+} finally {
+  setIsSubmitting(false);
+}
 
   return (
     <section id="contact" className="py-24 gradient-subtle">
