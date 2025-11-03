@@ -29,36 +29,38 @@ const UseCases = () => {
   ];
 
   return (
-    <section id="use-cases" className="py-24 gradient-subtle">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Built for Premium Service Businesses
+    <section id="use-cases" className="relative py-32 overflow-hidden">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-3xl mx-auto text-center mb-20 animate-fade-in">
+          <h2 className="text-4xl md:text-6xl font-bold mb-8">
+            Built for <span className="gradient-text">Premium Service</span> Businesses
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-xl text-foreground/70">
             Clinics • Spas • Restaurants • Fitness Studios
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {cases.map((useCase, index) => {
             const Icon = useCase.icon;
             return (
               <div
                 key={index}
-                className="p-8 rounded-2xl bg-card shadow-card hover:shadow-elegant transition-smooth animate-slide-up group"
+                className="group p-10 rounded-2xl bg-card/60 backdrop-blur-xl border border-primary/10 hover:border-primary/30 shadow-elegant hover:shadow-glow transition-smooth animate-slide-up hover:scale-105"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-smooth">
-                    <Icon className="w-7 h-7 text-primary" />
+                <div className="flex items-start gap-6">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary-glow/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-smooth shadow-soft">
+                    <Icon className="w-8 h-8 text-primary group-hover:text-primary-glow transition-smooth" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-2">{useCase.industry}</h3>
-                    <div className="text-sm font-medium text-accent mb-3">
+                    <h3 className="text-2xl font-bold mb-3 text-foreground">{useCase.industry}</h3>
+                    <div className="inline-block px-4 py-1.5 rounded-full bg-accent/20 text-accent text-sm font-semibold mb-4">
                       {useCase.benefit}
                     </div>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed text-base">
                       {useCase.description}
                     </p>
                   </div>

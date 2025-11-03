@@ -57,13 +57,15 @@ const Pricing = () => {
   };
 
   return (
-    <section id="pricing" className="py-24 bg-secondary/30">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Simple, Transparent Pricing
+    <section id="pricing" className="relative py-32 overflow-hidden">
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-3xl mx-auto text-center mb-20 animate-fade-in">
+          <h2 className="text-4xl md:text-6xl font-bold mb-8">
+            Simple, <span className="gradient-text">Transparent</span> Pricing
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg md:text-xl text-foreground/70">
             Choose the plan that fits your business needs
           </p>
         </div>
@@ -72,33 +74,35 @@ const Pricing = () => {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative p-8 rounded-2xl shadow-card hover:shadow-elegant transition-smooth animate-slide-up ${
+              className={`group relative p-10 rounded-2xl backdrop-blur-xl shadow-elegant hover:shadow-glow transition-smooth animate-slide-up hover:scale-105 ${
                 plan.popular
-                  ? "bg-primary/5 border-2 border-primary"
-                  : "bg-card"
+                  ? "bg-card/80 border-2 border-primary shadow-glow"
+                  : "bg-card/60 border border-primary/10 hover:border-primary/30"
               }`}
               style={{ animationDelay: `${index * 0.15}s` }}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-accent text-accent-foreground text-sm font-semibold shadow-soft">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-gradient-to-r from-accent to-accent/80 text-accent-foreground text-sm font-bold shadow-glow">
                   Most Popular
                 </div>
               )}
 
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                <div className="flex items-baseline justify-center gap-1 mb-2">
-                  <span className="text-4xl font-bold">{plan.price}</span>
-                  <span className="text-muted-foreground">{plan.period}</span>
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-bold mb-4 text-foreground">{plan.name}</h3>
+                <div className="flex items-baseline justify-center gap-2 mb-3">
+                  <span className="text-5xl font-bold gradient-text">{plan.price}</span>
+                  <span className="text-muted-foreground text-lg">{plan.period}</span>
                 </div>
-                <p className="text-sm text-muted-foreground">{plan.description}</p>
+                <p className="text-sm text-foreground/70">{plan.description}</p>
               </div>
 
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-4 mb-10">
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                    <span className="text-sm">{feature}</span>
+                    <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-3 h-3 text-primary" />
+                    </div>
+                    <span className="text-sm text-foreground/80">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -106,7 +110,7 @@ const Pricing = () => {
               <Button
                 variant={plan.popular ? "hero" : "outline"}
                 size="lg"
-                className="w-full"
+                className={`w-full ${plan.popular ? "shadow-glow" : "border-primary/30 hover:border-primary hover:bg-primary/10"}`}
                 onClick={scrollToContact}
               >
                 {plan.name === "Enterprise" ? "Get a Quote" : "Get Started"}
