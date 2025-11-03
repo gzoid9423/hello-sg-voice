@@ -29,7 +29,7 @@ const ContactForm = () => {
 
     try {
       // TODO: Replace with your n8n webhook URL
-      const webhookUrl = "https://gzoidx.app.n8n.cloud/webhook-test/lovable";
+      const webhookUrl = "https://gzoidx.app.n8n.cloud/webhook/lovable";
       
       const res = await fetch(webhookUrl, {
     method: "POST",
