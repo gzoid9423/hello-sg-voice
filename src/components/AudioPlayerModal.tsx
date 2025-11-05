@@ -2,7 +2,8 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { X, Play, Pause } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
-import demoAudio from "@/assets/demo-voice.mp3";
+import demoAudio from "@src/assets/demo-voice.mp3";
+<audio ref={audioRef} src="/assets/demo-voice.mp3" />
 
 interface AudioPlayerModalProps {
   open: boolean;
