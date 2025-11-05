@@ -181,8 +181,8 @@ const ContactForm = () => {
           <div className="mt-8 text-center animate-fade-in" style={{ animationDelay: "0.2s" }}>
             <p className="text-sm text-secondary">
               Prefer email? Reach us directly at{" "}
-              <a href="mailto:hello@aveniq.sg" className="text-primary hover:text-primary/80 transition-smooth">
-                hello@aveniq.sg
+              <a href="mailto:gautham.dep@gmail.com" className="text-primary hover:text-primary/80 transition-smooth">
+                gautham.dep@gmail.com
               </a>
             </p>
           </div>
